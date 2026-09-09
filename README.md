@@ -105,6 +105,12 @@ trade-offs, chosen on purpose:
 - **Styles are inline and there are no automated tests.** It's a small app that has
   earned its keep on real phones; that was the bar, not test coverage.
 
+## Using this?
+
+If you spin it up for your own family, or build something on top of it, I'd
+genuinely love to hear about it — open an issue here, or reach out on LinkedIn.
+Half the reason I put it out in the open is to see what people do with it.
+
 ## License
 
 Not yet licensed — treat as source-available for reading and learning. (An OSI
