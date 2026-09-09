@@ -5,9 +5,9 @@ bonus chores pay an **escalating streak ladder** and a **weekly multiplier**; ev
 dollar earned fills a progress bar toward one big savings goal. Built for — and
 used daily by — a real family, syncing live across everyone's phones.
 
-> **Try it:** the public demo runs entirely in your browser on sample data —
-> tap chores, watch earnings climb, hit payday. Nothing is saved to any server.
-> _(Live demo link: **TODO — add your deploy URL**)_
+> **▶ [Try the live demo → allowance-arcade.vercel.app](https://allowance-arcade.vercel.app)**
+> — it runs entirely in your browser on sample data: tap chores, watch earnings
+> climb, hit payday. Nothing is saved to any server, so there's nothing to break.
 
 <p align="center">
   <img src="docs/screenshots/current-week.jpg" alt="This week's earnings, goal bar, and baseline chore grid" width="32%">
