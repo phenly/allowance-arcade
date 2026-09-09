@@ -1,6 +1,12 @@
--- Max's Money Maker — Supabase Schema
--- Run this in your Supabase SQL editor at:
--- https://supabase.com/dashboard/project/dbgnbhcovxpgfqmednrd/sql/new
+-- The Allowance Arcade — Supabase schema
+-- Run this in your project's Supabase SQL editor
+-- (Dashboard → SQL Editor → New query), then run 002_add_total_override.sql.
+--
+-- NOTE ON SECURITY: the policies below grant full public read/write with no auth.
+-- That's fine for a private, single-family instance whose anon key you don't share.
+-- Do NOT point a public deployment at a real backend with these policies — anyone
+-- with the anon key could read or overwrite your data. The public demo avoids this
+-- entirely by running with no backend at all (see VITE_DEMO_MODE in the README).
 
 -- Tracks each calendar week and payday status
 CREATE TABLE IF NOT EXISTS weeks (

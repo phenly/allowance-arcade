@@ -1,10 +1,10 @@
-import { fmtDollar, PS5_GOAL } from '../lib/utils'
+import { fmtDollar, GOAL } from '../lib/utils'
 
-export default function PS5Bar({ paidSavings = 0, unpaidSavings = 0 }) {
+export default function GoalBar({ paidSavings = 0, unpaidSavings = 0 }) {
   const total = paidSavings + unpaidSavings
-  const remaining = Math.max(PS5_GOAL - total, 0)
-  const paidPct = Math.min((paidSavings / PS5_GOAL) * 100, 100)
-  const unpaidPct = Math.min((unpaidSavings / PS5_GOAL) * 100, Math.max(0, 100 - paidPct))
+  const remaining = Math.max(GOAL.amount - total, 0)
+  const paidPct = Math.min((paidSavings / GOAL.amount) * 100, 100)
+  const unpaidPct = Math.min((unpaidSavings / GOAL.amount) * 100, Math.max(0, 100 - paidPct))
 
   return (
     <div style={{
@@ -15,7 +15,7 @@ export default function PS5Bar({ paidSavings = 0, unpaidSavings = 0 }) {
       border: '1px solid rgba(255,255,255,0.08)',
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-        <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>🎮 PS5 Quest</div>
+        <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>{GOAL.emoji} {GOAL.label}</div>
         <div style={{ fontSize: '0.8rem', fontWeight: 700, textAlign: 'right' }}>
           <span style={{ color: '#fbbf24' }}>{fmtDollar(paidSavings)} paid</span>
           {unpaidSavings > 0 && (
@@ -24,7 +24,7 @@ export default function PS5Bar({ paidSavings = 0, unpaidSavings = 0 }) {
               <span style={{ color: '#a78bfa' }}>{fmtDollar(unpaidSavings)} unpaid</span>
             </span>
           )}
-          <span style={{ color: 'rgba(255,255,255,0.35)', fontWeight: 400 }}> / {fmtDollar(PS5_GOAL)}</span>
+          <span style={{ color: 'rgba(255,255,255,0.35)', fontWeight: 400 }}> / {fmtDollar(GOAL.amount)}</span>
         </div>
       </div>
       <div style={{ height: '14px', background: 'rgba(255,255,255,0.08)', borderRadius: '7px', overflow: 'hidden', display: 'flex' }}>

@@ -3,6 +3,30 @@ import CurrentWeek from './components/CurrentWeek'
 import HistoryView from './components/HistoryView'
 import NavBar from './components/NavBar'
 import { getWeekStartStr } from './lib/utils'
+import { IS_DEMO } from './lib/supabase'
+import { resetDemo } from './lib/demoClient'
+
+function DemoBanner() {
+  return (
+    <div style={{
+      padding: '7px 14px', fontSize: '0.72rem', textAlign: 'center',
+      color: '#fde68a', background: 'rgba(251,191,36,0.12)',
+      borderBottom: '1px solid rgba(251,191,36,0.25)',
+    }}>
+      🎮 Demo mode — you're in a local sandbox; changes stay in this browser only.{' '}
+      <button
+        onClick={() => { resetDemo(); window.location.reload() }}
+        style={{
+          background: 'none', border: 'none', color: '#fbbf24',
+          fontWeight: 700, cursor: 'pointer', textDecoration: 'underline',
+          fontSize: '0.72rem', padding: 0,
+        }}
+      >
+        Reset
+      </button>
+    </div>
+  )
+}
 
 export default function App() {
   const [view, setView] = useState('current')
@@ -36,6 +60,8 @@ export default function App() {
         .pop-anim { animation: pop 0.35s ease; }
         body { margin: 0; }
       `}</style>
+
+      {IS_DEMO && <DemoBanner />}
 
       {view === 'current'
         ? <CurrentWeek weekStart={weekStart} />

@@ -1,4 +1,4 @@
-import { fmtDollar } from '../lib/utils'
+import { fmtDollar, GOAL } from '../lib/utils'
 
 export default function PaydayModal({ total, baselineEarnings, dailyEarnings, weeklyEarnings, edited = false, onConfirm, onCancel }) {
   return (
@@ -73,7 +73,7 @@ export default function PaydayModal({ total, baselineEarnings, dailyEarnings, we
         </div>
 
         <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.35)', textAlign: 'center', marginBottom: '20px' }}>
-          This week will be locked and added to the PS5 Quest savings.
+          This week will be locked and added to the {GOAL.label} savings.
         </div>
 
         <div style={{ display: 'flex', gap: '12px' }}>

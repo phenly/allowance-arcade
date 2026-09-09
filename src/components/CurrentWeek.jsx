@@ -2,7 +2,7 @@ import { useWeekData } from '../hooks/useWeekData'
 import { getTodayIndex, computeEarnings, effectiveTotal } from '../lib/utils'
 import Header from './Header'
 import EarningsHero from './EarningsHero'
-import PS5Bar from './PS5Bar'
+import GoalBar from './GoalBar'
 import BaselineSection from './BaselineSection'
 import DailyBonusSection from './DailyBonusSection'
 import WeeklyBonusSection from './WeeklyBonusSection'
@@ -80,7 +80,7 @@ export default function CurrentWeek({ weekStart }) {
         baselineComplete={baselineComplete}
       />
 
-      <PS5Bar paidSavings={ps5PaidSavings} unpaidSavings={unpaidSavings} />
+      <GoalBar paidSavings={ps5PaidSavings} unpaidSavings={unpaidSavings} />
 
       <BaselineSection
         baselineChecks={baselineChecks}

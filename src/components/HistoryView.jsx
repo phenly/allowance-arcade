@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { loadAllWeeks } from '../hooks/useWeekData'
 import { formatWeekRange, fmtDollar, fmtEditDate, getWeekStartStr } from '../lib/utils'
 import Header from './Header'
-import PS5Bar from './PS5Bar'
+import GoalBar from './GoalBar'
 import WeekDetail from './WeekDetail'
 
 // Build a CSV of every week's earnings and trigger a download.
@@ -65,7 +65,7 @@ export default function HistoryView() {
       <Header weekStart={currentWeekStart} />
 
       {!loading && !error && weeks.length > 0 && (
-        <PS5Bar paidSavings={paidSavings} unpaidSavings={unpaidSavings} />
+        <GoalBar paidSavings={paidSavings} unpaidSavings={unpaidSavings} />
       )}
 
       <div style={{ padding: '16px' }}>

@@ -83,7 +83,14 @@ export function fmtEditDate(ts) {
   return `${mm}/${dd}/${d.getFullYear()}`
 }
 
-// Chore config data
+// ─────────────────────────────────────────────────────────────────────────
+// CUSTOMIZE HERE — this block is the whole "clone and make it yours" surface.
+// Change the chores, icons, dollar values, level curve and goal below and the
+// arcade retargets to your kid. (One caveat: the three BASELINE_CHORES ids —
+// 'bed'/'room'/'laundry' — are also referenced by name in computeEarnings()
+// and in useWeekData's EMPTY_* maps, so renaming a baseline id means updating
+// those two spots too. Daily/weekly bonus ids are data-driven and safe to edit.)
+// ─────────────────────────────────────────────────────────────────────────
 export const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
 export const BASELINE_CHORES = [
@@ -108,7 +115,14 @@ export const WEEKLY_BONUS = [
   { id: 'groceries', icon: '🛒', label: 'Put Away Groceries', value: 0.75 },
 ]
 
-export const PS5_GOAL = 600
+// The savings goal the arcade counts toward. Retarget it at anything — a bike,
+// a trip, a game console — by changing these three fields; nothing else needs to
+// know what the goal is.
+export const GOAL = {
+  label: 'PS5 Quest', // shown on the progress bar
+  emoji: '🎮',
+  amount: 600,        // dollar target
+}
 
 // Compute earnings from current state
 export function computeEarnings({ baselineChecks, dailyChecks, weeklyChecks, todayIndex }) {

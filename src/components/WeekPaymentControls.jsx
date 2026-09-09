@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { fmtDollar, fmtEditDate } from '../lib/utils'
+import { fmtDollar, fmtEditDate, GOAL } from '../lib/utils'
 import PaydayModal from './PaydayModal'
 import EditTotalModal from './EditTotalModal'
 
@@ -84,7 +84,7 @@ export default function WeekPaymentControls({
                 <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)', marginBottom: '12px', textAlign: 'center' }}>
                   This will unlock the week for editing and remove{' '}
                   <span style={{ color: '#f87171', fontWeight: 700 }}>{fmtDollar(effectiveTotalValue)}</span>{' '}
-                  from the PS5 paid balance. Continue?
+                  from the {GOAL.label} paid balance. Continue?
                 </div>
                 <div style={{ display: 'flex', gap: '10px' }}>
                   <button
