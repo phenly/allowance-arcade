@@ -43,14 +43,21 @@ IS_DEMO = import.meta.env.VITE_DEMO_MODE === 'true' || !VITE_SUPABASE_URL || !VI
 - `IS_DEMO === true` → browser-local sample data via `src/lib/demoClient.js`, nothing hits a backend, and `App.jsx` shows the "Demo mode" banner.
 - `IS_DEMO === false` → runs against the Supabase project named by the env vars.
 
-⚠️ **Confirm before relying on it:** as observed, this project has **both**
-`VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` set and **no** `VITE_DEMO_MODE`,
-which by the rule above means `IS_DEMO` is **false** — i.e. it runs against a
-Supabase backend, not the browser-local sandbox. Verify in the Vercel dashboard
-**which** Supabase project those creds point at (it should be a throwaway demo DB,
-**not** the real family DB used by [`chore-tracker`](./handoff-chore-tracker.md)).
-If you want the true browser-local sandbox described in `.env.example`, set
-`VITE_DEMO_MODE=true` (or clear the Supabase creds) on this project.
+**Verified (2026-09-18): the live demo runs browser-local, matching the README.**
+`vercel env ls` lists `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` on this
+project, but they are **empty/blank in the production build** (they show as
+"Encrypted"/Sensitive in the CLI, which is *not* evidence of a real value). Ground
+truth is the deployed bundle: Vite inlines `VITE_*` at build time, and the live
+`arcade.pixelbytes.net` bundle contains **no `*.supabase.co` URL, no project ref,
+and no anon-key JWT** — so `!VITE_SUPABASE_URL` is true and `IS_DEMO` is **true**.
+Nothing hits a backend; the "Demo mode" banner shows. (To re-check: fetch the
+`/assets/index-*.js` bundle and `grep` for `supabase.co`.)
+
+⚠️ **Latent fragility:** demo mode here depends on those creds staying **empty**.
+If anyone fills `VITE_SUPABASE_URL` + `VITE_SUPABASE_ANON_KEY` on this project, the
+public demo would silently start hitting that backend with **no README change**. To
+lock the sandbox regardless of the creds, set **`VITE_DEMO_MODE=true`** on this
+project (redeploy to apply) — recommended but not yet done.
 
 ## When you touch the demo
 
