@@ -66,3 +66,11 @@ project (redeploy to apply) — recommended but not yet done.
    vars, re-check **both** projects' Vercel env settings.
 3. Demo domains: changes to `arcade.pixelbytes.net` / `arcade.pixelbites.net`
    routing are Vercel-project domains here; DNS lives at GoDaddy.
+
+## Open items to revisit
+
+- [ ] **Lock demo mode explicitly.** Set `VITE_DEMO_MODE=true` on this Vercel
+  project and redeploy, so the public sandbox stays browser-local even if the
+  Supabase creds are ever populated (see "Latent fragility" above).
+  *Status as of 2026-09-21: recommended, deliberately **not applied** yet — the
+  live demo is already browser-local (verified), so this is hardening, not a fix.*
